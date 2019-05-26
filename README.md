@@ -1,4 +1,4 @@
-# pool
+# pool [![CircleCI](https://circleci.com/gh/rocketbitz/pool/tree/master.svg?style=svg)](https://circleci.com/gh/rocketbitz/pool/tree/master)
 a simple worker pool for gophers
 
 # installation
