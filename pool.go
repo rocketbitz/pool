@@ -43,11 +43,8 @@ func (p *Pool) Work(c <-chan interface{}) {
 	for {
 		v, more = <-c
 
-		// fmt.Println("job queued...", p.started)
-
 		// the work channel was closed, let's exit
 		if !more {
-			// fmt.Println("exiting...", p.run)
 			return
 		}
 
@@ -67,7 +64,6 @@ func (p *Pool) Work(c <-chan interface{}) {
 			p.workerQ <- struct{}{}
 
 			atomic.AddUint64(&p.run, 1)
-			// fmt.Println("job run...", p.run)
 		}(v)
 	}
 }
@@ -76,7 +72,6 @@ func (p *Pool) Work(c <-chan interface{}) {
 func (p *Pool) Wait() {
 	<-p.done
 	for {
-		// fmt.Println("done waiting", p.started, p.run)
 		if p.started == p.run {
 			return
 		}
